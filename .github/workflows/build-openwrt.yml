@@ -10,6 +10,7 @@ name: Build OpenWrt
 
 on:
   repository_dispatch:
+  workflow_dispatch:        # ✅ 这一行就是“Run workflow”手动按钮
   release:
     types: published
   push:
@@ -17,11 +18,8 @@ on:
       - master
     paths:
       - '.config'
-#  schedule:
-#    - cron: 0 8 * * 5
-#  watch:
-#    types: started
-
+  watch:
+    types: started          # ✅ 这一行能让你通过点右上角的 Star 来启动
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
